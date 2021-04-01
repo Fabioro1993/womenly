@@ -16,25 +16,16 @@ use App\Http\Controllers\ProductoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Redirect::to('productos');
+    //return view('welcome');
 });
-
-//Route::resource('productos', ProductoController::class);
 
 Route::get('productos', [ProductoController::class, 'index']);
 
 Route::post('productos/store', [ProductoController::class, 'store']);
 
-Route::get('productos/delete/{id}', [ProductoController::class, 'destroy']);
-
 Route::get('productos/edit', [ProductoController::class, 'edit'])->name('productos/edit');
 
 Route::post('productos/update/{id}', [ProductoController::class, 'update']);
 
-
-//Route::post('productos/store',['as'=>'productos/store','uses'=>'ProductoController@store']);
-
-
-// Route::resource('productos', ProductoController::class)->only([
-//     'index', 'store'
-// ]);
+Route::get('productos/delete/{id}', [ProductoController::class, 'destroy']);
